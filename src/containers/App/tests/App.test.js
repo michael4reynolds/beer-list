@@ -32,4 +32,12 @@ describe('App Container', () => {
     expect(addItem).toBeDefined();
     expect(inputArea.prop('onSubmit')).toEqual(addItem);
   });
+
+
+  it('binds addItem function to InputArea', () => {
+    const wrapper = shallow(<App/>);
+    const inputArea = wrapper.find('InputArea');
+    inputArea.prop('onSubmit')('Sam Adams');
+    expect(wrapper.state('beers')).toEqual(['Sam Adams']);
+  });
 });

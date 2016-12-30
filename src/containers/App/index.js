@@ -19,7 +19,7 @@ class App extends Component {
     beers: [],
   }
 
-  addItem(name) {
+  addItem = (name) => {
     this.setState({ beers: [...this.state.beers, name] });
   }
 
