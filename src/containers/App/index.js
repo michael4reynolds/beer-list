@@ -1,21 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const AppWrapper = styled.div`
+  max-width: calc(768px + 16px * 2);
+  margin: 0 auto;
+  display: flex;
+  min-height: 100%;
+  padding: 0 16px;
+  flex-direction: column;
+`;
+
+const App = props => (
+  <AppWrapper>
+    <Helmet
+      titleTemplate="%s - React.js Boilerplate"
+      defaultTitle="React.js Boilerplate"
+      meta={[
+          { name: 'description', content: 'A React.js Boilerplate application' },
+      ]}
+    />
+    {React.Children.toArray(props.children)}
+    <InputArea/>
+    <BeerList/>
+  </AppWrapper>
+  );
+
+App.propTypes = {
+  children: React.PropTypes.node,
+};
 
 export default App;
