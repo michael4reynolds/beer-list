@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../';
 import BeerList from '../../BeerList';
-import InputArea from '../../../components/InputArea';
+import InputArea, { InputWrapper, ButtonWrapper } from '../../../components/InputArea';
 
 describe('App Container', () => {
   it('should render InputArea and BeerList', () => {
@@ -39,5 +39,16 @@ describe('App Container', () => {
     const inputArea = wrapper.find('InputArea');
     inputArea.prop('onSubmit')('Sam Adams');
     expect(wrapper.state('beers')).toEqual(['Sam Adams']);
+  });
+});
+
+describe('InputArea', () => {
+  it('should contain an input and a button', () => {
+    const wrapper = shallow(<InputArea/>);
+    // console.log(wrapper.debug());
+    expect(wrapper.containsAllMatchingElements([
+      <InputWrapper/>,
+      <ButtonWrapper>Add</ButtonWrapper>,
+    ])).toEqual(true);
   });
 });
