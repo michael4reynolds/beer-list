@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import BeerList from '../BeerList';
-import InputArea from '../../components/InputArea';
+import InputArea from '../InputArea';
 
 const AppWrapper = styled.div`
   max-width: calc(380px + 16px * 2);

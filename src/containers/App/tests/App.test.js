@@ -1,8 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from '../';
 import BeerList from '../../BeerList';
-import InputArea, { InputWrapper, ButtonWrapper } from '../../../components/InputArea';
+import InputArea from '../../InputArea';
+import Input from '../../../components/Input';
+import Button from '../../../components/Button';
 
 describe('App Container', () => {
   it('should render InputArea and BeerList', () => {
@@ -47,8 +49,15 @@ describe('InputArea', () => {
     const wrapper = shallow(<InputArea/>);
     // console.log(wrapper.debug());
     expect(wrapper.containsAllMatchingElements([
-      <InputWrapper/>,
-      <ButtonWrapper>Add</ButtonWrapper>,
+      <Input/>,
+      <Button>Add</Button>,
     ])).toEqual(true);
+  });
+
+  it('should accept input', () => {
+    const wrapper = mount(<InputArea/>);
+    const input = wrapper.find('input');
+    input.simulate('change', { target: { value: 'Resin' } });
+    expect(input.prop('value')).toEqual('Resin');
   });
 });
