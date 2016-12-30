@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 import BeerList from '../BeerList';
@@ -14,20 +14,32 @@ const AppWrapper = styled.div`
   margin-top: 15px;
 `;
 
-const App = props => (
-  <AppWrapper>
-    <Helmet
-      titleTemplate="%s - React.js Boilerplate"
-      defaultTitle="React.js Boilerplate"
-      meta={[
+class App extends Component {
+  state = {
+    beers: [],
+  }
+
+  addItem(name) {
+    this.setState({ beers: [...this.state.beers, name] });
+  }
+
+  render() {
+    return (
+      <AppWrapper>
+        <Helmet
+          titleTemplate="%s - React.js Boilerplate"
+          defaultTitle="React.js Boilerplate"
+          meta={[
           { name: 'description', content: 'A React.js Boilerplate application' },
-      ]}
-    />
-    {React.Children.toArray(props.children)}
-    <InputArea/>
-    <BeerList/>
-  </AppWrapper>
-  );
+          ]}
+        />
+        {React.Children.toArray(this.props.children)}
+        <InputArea onSubmit={this.addItem}/>
+        <BeerList/>
+      </AppWrapper>
+    );
+  }
+}
 
 App.propTypes = {
   children: React.PropTypes.node,

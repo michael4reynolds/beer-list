@@ -14,13 +14,22 @@ describe('App Container', () => {
   });
 
   it('should start wirh an empty list', () => {
-    const wrapper = shallow(<BeerList/>);
+    const wrapper = shallow(<App/>);
     expect(wrapper.state('beers')).toEqual([]);
   });
 
   it('adds items to the list', () => {
-    const wrapper = shallow(<BeerList/>);
+    const wrapper = shallow(<App/>);
     wrapper.instance().addItem('Sam Adams');
     expect(wrapper.state('beers')).toEqual(['Sam Adams']);
+  });
+
+
+  it('passes addItem to InputArea', () => {
+    const wrapper = shallow(<App/>);
+    const inputArea = wrapper.find('InputArea');
+    const addItem = wrapper.instance().addItem;
+    expect(addItem).toBeDefined();
+    expect(inputArea.prop('onSubmit')).toEqual(addItem);
   });
 });

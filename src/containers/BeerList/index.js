@@ -1,19 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class BeerList extends Component {
-  state = {
-    beers: [],
-  }
-
-  addItem(name) {
-    this.setState({ beers: [...this.state.beers, name] });
-  }
-
-  render() {
-    return (
-      <ul/>
+const BeerList = () => (
+  <ul/>
     );
-  }
-}
 
 export default BeerList;
