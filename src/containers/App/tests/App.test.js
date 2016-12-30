@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from '../';
+import BeerList from '../../BeerList';
+import InputArea from '../../../components/InputArea';
 
 describe('App Container', () => {
   it('should render InputArea and BeerList', () => {
