@@ -5,6 +5,10 @@ class BeerList extends Component {
     beers: [],
   }
 
+  addItem(name) {
+    this.setState({ beers: [...this.state.beers, name] });
+  }
+
   render() {
     return (
       <ul/>

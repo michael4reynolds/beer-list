@@ -13,9 +13,14 @@ describe('App Container', () => {
     ])).toEqual(true);
   });
 
-
   it('should start wirh an empty list', () => {
     const wrapper = shallow(<BeerList/>);
     expect(wrapper.state('beers')).toEqual([]);
+  });
+
+  it('adds items to the list', () => {
+    const wrapper = shallow(<BeerList/>);
+    wrapper.instance().addItem('Sam Adams');
+    expect(wrapper.state('beers')).toEqual(['Sam Adams']);
   });
 });
