@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const BeerList = () => (
-  <ul/>
+class BeerList extends Component {
+  state = {
+    beers: [],
+  }
+
+  render() {
+    return (
+      <ul/>
     );
+  }
+}
 
 export default BeerList;

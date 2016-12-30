@@ -12,5 +12,10 @@ describe('App Container', () => {
       <BeerList/>,
     ])).toEqual(true);
   });
-});
 
+
+  it('should start wirh an empty list', () => {
+    const wrapper = shallow(<BeerList/>);
+    expect(wrapper.state('beers')).toEqual([]);
+  });
+});
