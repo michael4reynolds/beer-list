@@ -42,6 +42,13 @@ describe('App Container', () => {
     inputArea.prop('onSubmit')('Sam Adams');
     expect(wrapper.state('beers')).toEqual(['Sam Adams']);
   });
+
+  it('renders the items', () => {
+    const wrapper = mount(<App/>);
+    wrapper.instance().addItem('Sam Adams');
+    wrapper.instance().addItem('Resin');
+    expect(wrapper.find('li').length).toBe(2);
+  });
 });
 
 describe('InputArea', () => {
