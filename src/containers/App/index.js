@@ -35,7 +35,7 @@ class App extends Component {
         />
         {React.Children.toArray(this.props.children)}
         <InputArea onSubmit={this.addItem}/>
-        <BeerList/>
+        <BeerList items={this.state.beers}/>
       </AppWrapper>
     );
   }

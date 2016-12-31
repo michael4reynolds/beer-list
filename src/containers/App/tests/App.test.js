@@ -71,3 +71,22 @@ describe('InputArea', () => {
     expect(addItem).toHaveBeenCalledWith('Octoberfest');
   });
 });
+
+describe('BeerList', () => {
+  it('should render 0 items', () => {
+    const wrapper = mount(<BeerList items={[]}/>);
+    expect(wrapper.find('li').length).toBe(0);
+  });
+
+  it('should render undefined items', () => {
+    const wrapper = mount(<BeerList items={undefined}/>);
+    expect(wrapper.find('li').length).toBe(0);
+  });
+
+  it('should render the items', () => {
+    const items = ['Sam Adams', 'Resin', 'Octoberfest'];
+    const wrapper = mount(<BeerList items={items}/>);
+    expect(wrapper.find('li').length).toBe(3);
+  });
+});
+
