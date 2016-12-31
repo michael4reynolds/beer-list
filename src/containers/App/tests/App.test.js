@@ -60,4 +60,14 @@ describe('InputArea', () => {
     input.simulate('change', { target: { value: 'Resin' } });
     expect(input.prop('value')).toEqual('Resin');
   });
+
+  it('should call onSubmit when Add is clicked', () => {
+    const addItem = jest.fn();
+    const wrapper = mount(<InputArea onSubmit={addItem}/>);
+    wrapper.setState({ text: 'Octoberfest' });
+    const addButton = wrapper.find('button');
+    addButton.simulate('click');
+    expect(addItem).toHaveBeenCalled();
+    expect(addItem).toHaveBeenCalledWith('Octoberfest');
+  });
 });

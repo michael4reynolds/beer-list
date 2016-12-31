@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 class InputArea extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+
   state = {
     text: '',
   }
@@ -11,11 +15,15 @@ class InputArea extends Component {
     this.setState({ text: e.target.value });
   }
 
+  handleClick = () => {
+    this.props.onSubmit(this.state.text);
+  }
+
   render() {
     return (
       <div>
         <Input value={this.state.text} onChange={this.setText}/>
-        <Button>Add</Button>
+        <Button onClick={this.handleClick}>Add</Button>
       </div>
     );
   }
